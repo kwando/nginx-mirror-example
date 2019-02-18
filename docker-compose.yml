@@ -1,0 +1,16 @@
+version: '3'
+services:
+  proxy:
+    image: nginx:latest
+    ports:
+      - 9088:80
+    volumes:
+      - ./proxy.conf:/etc/nginx/conf.d/default.conf
+  app:
+    image: nginx:latest
+    volumes:
+      - ./app:/usr/share/nginx/html
+  mirror:
+    image: nginx:latest
+    volumes:
+      - ./mirror:/usr/share/nginx/html
